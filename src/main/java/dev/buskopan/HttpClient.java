@@ -36,6 +36,9 @@ public class HttpClient {
                 sb.append(line);
             }
 
+            con.disconnect();
+            in.close();
+
             return sb.toString();
 
         } catch (IOException e) {

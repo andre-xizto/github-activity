@@ -1,6 +1,7 @@
 package dev.buskopan.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class GithubEvent implements Serializable {
 
@@ -39,5 +40,26 @@ public class GithubEvent implements Serializable {
 
     public void setRepo(GithubRepo repo) {
         this.repo = repo;
+    }
+
+    @Override
+    public String toString() {
+        return "GithubEvent{" +
+                "id='" + id + '\'' +
+                ", type='" + type + '\'' +
+                ", repo=" + repo +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GithubEvent that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(type, that.type) && Objects.equals(repo, that.repo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, repo);
     }
 }
